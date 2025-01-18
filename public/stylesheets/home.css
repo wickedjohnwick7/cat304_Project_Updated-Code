@@ -1,0 +1,376 @@
+body {
+    margin: 0;
+    font-family: var(--bs-font-sans-serif);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #141313;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+
+  #background-video-1{
+    position: absolute;
+    top: -10%;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    object-fit: cover; /* Ensures the video covers the entire section */
+    z-index: -1; /* Puts the video behind the content */
+  }
+  #background-video-2{
+    position: absolute;
+    top: -0;
+    left: 0;
+    width: 100%;
+    height: 84%;
+    object-fit: cover; /* Ensures the video covers the entire section */
+    z-index: -1; /* Puts the video behind the content */
+  
+  }
+  #background-video-1 {
+    -webkit-filter: blur(7px); /* For Safari 6.0 - 9.0 */
+    filter: blur(7px); /* Standard syntax */
+  }
+  #background-video-2 {
+    -webkit-filter: blur(8px); /* For Safari 6.0 - 9.0 */
+    filter: blur(8px); /* Standard syntax */
+  }
+
+.cover-container {
+    max-height: 95vh; /* Full screen height for the top section */
+}
+#cat304 {
+    padding: 100px 0; /* Add spacing for the scroll-down section */
+    display: flex;
+}
+/* Navbar Styling */
+
+.navbar {
+    display: flex;
+    justify-content: center; /* Center the navbar horizontally */
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for visibility */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    border-radius: 10px; /* Rounded corners for the navbar */
+    padding: 0.5rem 1rem; /* Add padding for better structure */
+    margin: 0 auto; /* Center the navbar within its parent container */
+    width: fit-content; /* Shrinks the navbar to fit its content */
+}
+
+.nav-container{
+    width: 50%;
+    height: 5rem;
+
+
+}
+.navbar:hover {
+    max-height: 400px;
+    transition: max-height 0.3s ease-in-out;
+}
+
+/* Navbar Brand Styling */
+.navbar-brand {
+    font-size: 1.5rem; /* Make the brand name prominent */
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-brand:hover {
+    color: rgba(255, 255, 255, 0.8); /* Slight hover effect for the brand */
+}
+
+/* Navbar Links Alignment */
+.navbar-nav {
+    margin-left: auto; /* Push navigation links to the right */
+}
+
+/* Navbar Links Styling */
+.navbar-nav .nav-link {
+    
+    padding: 0.25rem 0;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.85); /* Light text color for links */
+    margin-left: 1rem; /* Add spacing between links */
+    border-bottom: 0.25rem solid transparent; /* Invisible border for hover effect */
+    transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out; /* Smooth transitions */
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+    color: white; /* Pure white on hover */
+    border-bottom-color: white; /* Add a bottom border effect on hover */
+}
+
+/* Active Link Styling */
+.navbar-nav .nav-link.active {
+    color: white; /* Keep active link color as white */
+    border-bottom-color: white; /* Keep the bottom border on the active link */
+}
+
+/* Navbar Toggler Styling */
+.navbar-toggler {
+    border: none; /* Remove default border for a cleaner look */
+}
+
+.navbar-toggler-icon {
+    background-color: white; /* Make the toggler icon visible on dark background */
+    border-radius: 50%; /* Optional: make the toggler icon circular */
+}
+
+/* Responsive Navbar Dropdown Styling */
+.navbar-collapse {
+    justify-content: flex-end; /* Ensure dropdown links align properly when collapsed */
+    text-align: right; /* Align text to the right for dropdowns */
+    overflow: hidden;
+}
+
+
+/* Main Content Styling */
+main {
+    display: flex;
+    flex-direction: column; /* Align content vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    height: 100vh; /* Full height of the viewport */
+    text-align: center; /* Center text alignment */
+}
+
+
+/* Button Styling */
+.btn-secondary, .btn-secondary:hover {
+    color: #333;
+    text-shadow: none;
+    background-color: white;
+    border: 2px solid transparent;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: transparent;
+    color: white;
+    border-color: white; /* Border changes to white on hover */
+}
+
+/* Footer Styling */
+footer {
+    margin-top: auto;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+  /* Sidebar styling */
+  .offcanvas {
+    background-color: #343a40;
+    color: white;
+}
+
+.offcanvas a {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.offcanvas a:hover {
+    color: white;
+}
+
+@media (min-width: 992px) {
+    /* Hide the offcanvas toggle button and show the navbar normally on large screens */
+    #sidebarToggle {
+        display: none;
+    }
+}
+
+
+
+.footer {
+    padding-top: 1rem;
+    background-color: #151414;
+  }
+
+.blockquote-footer {
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+    font-size: 0.875em;
+    color: #6c757d;
+  }
+  .blockquote-footer::before {
+    content: "— ";
+  }
+  .contact-box__icon {
+    width: 2rem;
+    stroke: #9926f0;
+    padding-top: 0.5rem;
+  }
+  @media (min-width: 576px) {
+    .contact-box__icon {
+      width: 4rem;
+    }
+  }
+  .services__content .icon {
+  font-size: 1.5rem;
+  color: #9926f0;
+}
+@media (min-width: 992px) {
+  .services__content .icon {
+    font-size: 2.5rem;
+  }
+}
+.contact-box__info {
+    padding: 0.4rem;
+    font-weight: 600;
+  }
+  .contact-box__info--title {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+  }
+  @media (min-width: 576px) {
+    .contact-box__info--title {
+      font-size: 1.4rem;
+    }
+  }
+  .contact-box__info--subtitle {
+    font-size: 0.8rem;
+    color: #6c757d;
+    text-decoration: none;
+  }
+  @media (min-width: 576px) {
+    .contact-box__info--subtitle {
+      font-size: 1rem;
+    }
+  }
+  p,a,h1,h2,h3,h4 {  
+    margin: 0;  
+    padding: 0;  
+}  
+
+
+/* Section Team */
+.section-team {
+    font-family: "Poppins", sans-serif;
+    padding: 0px;
+}
+
+.section-team .header-section {  
+    margin-bottom: 50px;  
+}  
+
+.section-team .header-section .small-title {  
+    margin-bottom: 25px;  
+    font-size: 16px;  
+    font-weight: 500;  
+    color: #3e64ff;  
+}  
+
+.section-team .header-section .title {  
+    font-weight: 700;  
+    font-size: 45px;  
+}
+
+/* Single Person Card */
+.section-team .single-person {  
+    margin-top: 30px;  
+    padding: 30px;  
+    background: linear-gradient(to bottom, #ffffff, #e6f2ff); /* Updated background gradient */
+    border-radius: 5px;  
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: all 0.3s ease; /* Smooth transitions for hover */
+}  
+
+/* Hover State for Single Person */
+.section-team .single-person:hover {  
+    background: linear-gradient(to right, #016cec, #00b5f7);  
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Enhanced hover shadow */
+}  
+
+/* Person Image */
+.section-team .single-person .person-image {  
+    position: relative;  
+    margin-bottom: 50px;  
+    border-radius: 50%;  
+    border: 4px dashed transparent;  
+    padding: 10px; /* Added initial padding */
+    transition: all 0.4s ease-in-out; /* Smooth transitions for hover effects */
+    background: linear-gradient(to right, #e3f2fd, #f0f9ff); /* Gradient background for the image */
+}  
+
+/* Hover State for Person Image */
+.section-team .single-person:hover .person-image {  
+    padding: 12px;  
+    border: 4px dashed #fff;  
+}  
+
+/* Person Image Content */
+.section-team .single-person .person-image img {  
+    width: 100%;  
+    border-radius: 50%;  
+}  
+
+/* Icon in Person Image */
+.section-team .single-person .person-image .icon {  
+    position: absolute;  
+    bottom: 0;  
+    left: 50%;  
+    transform: translate(-50%, 50%);  
+    display: inline-block;  
+    width: 60px;  
+    height: 60px;  
+    line-height: 60px;  
+    text-align: center;  
+    background: linear-gradient(to right, #3e64ff, #0099ff); /* Updated vibrant gradient */
+    color: #fff;  
+    border-radius: 50%;  
+    border: 2px solid #fff; /* Added border */
+    font-size: 24px;  
+    transition: all 0.3s ease;  
+}  
+
+/* Hover State for Icon */
+.section-team .single-person:hover .person-image .icon {  
+    background: none;  
+    background-color: #fff;  
+    color: #016cec;  
+}  
+
+/* Person Info */
+.section-team .single-person .person-info .full-name {  
+    margin-bottom: 10px;  
+    font-size: 1.25rem;  
+    font-weight: 700;  
+    color: #333; /* Neutral color for better visibility */
+    transition: color 0.3s ease; /* Smooth text transitions */
+}  
+
+.section-team .single-person .person-info .speciality {  
+    text-transform: uppercase;  
+    font-size: 1rem;  
+    color: #555; /* Neutral color for specialty */
+    transition: color 0.3s ease;  
+}  
+
+/* Hover State for Text */
+.section-team .single-person:hover .full-name,  
+.section-team .single-person:hover .speciality {  
+    color: #fff; /* Bright text on hover */
+}  
+
+/* Row Layout */
+.first-row {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.second-row {
+    display: flex;
+    justify-content: space-evenly;
+}
+.image-name {
+    margin-top: 10px; /* Add some space above the name */
+    font-size: 16px; /* Adjust the font size */
+    font-weight: 500; /* Slightly bold the text */
+    color: #333; /* Neutral color for the text */
+    font-family: "Poppins", sans-serif; /* Consistent font */
+}
+

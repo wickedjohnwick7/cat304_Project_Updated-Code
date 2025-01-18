@@ -1,0 +1,72 @@
+<% layout('layouts/boilerplate')%>
+<style>
+    body {
+        background-color: #d6eaf8;
+    }
+
+    .form-container {
+        background-color: #f8f9fa;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        height: 100%;
+    }
+
+    .image-container img {
+        max-width: 100%;
+        border-radius: 15px;
+    }
+
+    .btn-dark {
+        background-color: #6c757d;
+        color: white;
+        border: none;
+    }
+
+    .btn-dark:hover {
+        background-color: #5a6268;
+    }
+
+    a {
+        text-decoration: none;
+        color: #007bff;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .mt-custom {
+        margin-top: 7rem;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row justify-content-center align-items-start">
+        <!-- Image Section -->
+        <div class="col-md-6 d-none d-md-block image-container">
+            <img src="https://i.postimg.cc/tR29FtCG/CAT304.png" alt="Sign-in Illustration">
+        </div>
+
+        <!-- Form Section -->
+        <div class="col-md-6 form-container mt-custom">
+            <h3 class="text-center mb-4">Sign in</h3>
+            <form action="/login" method="POST" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label class="form-label" for="username">Username</label>
+                    <input class="form-control" type="text" name="username" id="username" placeholder="Username" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="password">Password</label>
+                    <input class="form-control" type="password" name="password" id="password" placeholder="Password" required>
+                </div>
+                <div class="mb-3 d-flex justify-content-center">
+                    <button class="btn btn-dark w-100">Sign in</button>
+                </div>
+                <p class="text-center mt-3">
+                    Don't have an account? <a href="/register">Register here</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>

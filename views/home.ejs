@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YelpCamp</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/home.css">
+
+</head>
+
+<body class="text-white bg-dark">
+    
+
+<style>
+    .image-container {
+        position: relative;
+        width: 15%; /* Adjust the width to control size */
+        aspect-ratio: 2 / 3; /* Set portrait aspect ratio */
+        margin: -1rem;
+        perspective: 1000px; /* Add perspective for 3D effect */
+    }
+    
+    .tilted-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensures image fills the container */
+        transform: rotateY(35deg) rotateX(2deg); /* Initial 3D tilt */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .tilted-image:hover {
+        transform: rotateY(0deg) rotateX(0deg) scale(1.05); /* Return to normal position with slight zoom */
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.8);
+    }
+    .main-section {
+        position: relative;
+        z-index: 1;
+    }
+    .red-boxes {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: flex-end;
+        gap: 20px;
+        margin-top: 20rem;
+        position: absolute;
+        top: 2.5rem;
+        right: 10rem;
+    }
+    /* Tilted Text */
+.tilted-text {
+    font-size: 2rem; /* Adjust the size as needed */
+    font-weight: bold;
+    color: #f7f9f9; /* Text color */
+    text-align: center; /* Center align text */
+    margin-top: 10px; /* Spacing from the image */
+    transform: rotateY(35deg) rotateX(2deg); /* Match the tilt of the images */
+    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transitions */
+}
+
+/* Hover Effect for Text */
+.image-container:hover .tilted-text {
+    transform: rotateY(0deg) rotateX(0deg) scale(1.05); /* Return to normal position with slight zoom */
+    color: #f57207; /* Change text color on hover */
+}
+
+    
+    /* Style the video overlay to cover the whole screen */
+#video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow: hidden;
+  }
+  
+  /* Full-screen video */
+  #video-overlay video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+   /* Video overlay styling */
+    #video-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.8); /* Darken the background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000; /* Ensure it's on top of all other elements */
+    }
+
+    #video-overlay video {
+        width: 70%; /* Adjust video size */
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Blur everything except the video overlay */
+    .blurred > *:not(#video-overlay) {
+        filter: blur(2px); /* Blur effect */
+        pointer-events: none; /* Prevent interaction with background elements */
+    }
+
+    body.blurred {
+        overflow: hidden; /* Prevent scrolling while the video is playing */
+    }
+
+    .allcampgrounds-container{
+        display: flex;
+        flex-direction: row;
+
+    }
+</style>
+
+<div id="video-overlay">
+    <video id="introVideo" autoplay muted playsinline>
+        <source src="video/logo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+
+
+<script>
+    // Wait for the DOM to load
+    document.addEventListener("DOMContentLoaded", function () {
+        const video = document.getElementById("introVideo");
+        const videoOverlay = document.getElementById("video-overlay");
+
+        // Add an event listener for the "ended" event
+        video.addEventListener("ended", function () {
+            // Hide the video overlay after the video ends
+            videoOverlay.style.display = "none";
+
+            // Remove blur from the body
+            document.body.classList.remove("blurred");
+        });
+
+        // Add a blur class to the body when the video starts
+        document.body.classList.add("blurred");
+    });
+</script>
+
+<video id="background-video-1" autoplay muted loop playsinline preload="auto">
+    <source src="video/video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+
+<div class="cover-container d-flex flex-column text-center w-100 h-100 p-3 mx-auto">
+    <header class="mb-auto">
+        <nav class="nav-container navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">WanderMalaysia</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/campgrounds">Campgrounds</a>
+                        </li>
+                        <% if (!currentUser) { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/register">Register</a>
+                        </li>
+                        <% } else { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+
+    <main class="col-md-6 main-section">
+        <h1>Wander Malaysia</h1>
+        <p class="lead">
+            Welcome! <br> Jump right in and explore our many campgrounds. <br>
+            Feel free to share some of your own and comment on others!
+
+        </p>
+        <a href="/campgrounds" class="btn btn-lg btn-secondary font-weight-bold border-white bg-white">
+            View Campgrounds
+        </a>
+    </main>
+
+    <!-- Tilted Images Section -->
+    <div class="red-boxes">
+        <!-- First Image -->
+        <div class="image-container">
+            <img src="images/istockphoto-140276232-612x612.jpg" alt="Image 1" class="img-fluid tilted-image">
+            <h1 class="tilted-text">Batu Ferrangi</h1>
+        </div>
+        <!-- Second Image -->
+        <div class="image-container">
+            <img src="images/Reasons-to-visit-Georgetown-Penang-Malaysia-2-800x484.jpg" alt="Image 2" class="img-fluid tilted-image">
+            <h1 class="tilted-text">George Town</h1>
+        </div>
+        <!-- Third Image -->
+        <div class="image-container">
+            <img src="images/Penang-Hill-images.jpg" alt="Image 3" class="img-fluid tilted-image">
+            <h1 class="tilted-text">Penang Hill</h1>
+        </div>
+    </div>
+    
+</div>
+
+<!-- Scrollable Section -->
+<section class="bg-light text-dark text-center" id="cat304">
+    <div class="col-md-6">
+        <img src="images/cat304_project.jpg" alt="Cat 304 Project" class="img-fluid rounded mb-3"
+            style="height: 50rem;">
+    </div>
+
+    
+    <div class="container col-md-6 section-team">  
+        <!-- Start Header Section -->  
+
+        <!-- / End Header Section -->  
+    
+        <!-- First Row -->
+        <div class="conatainer first-row ">
+            <!-- Start Single Person -->
+            <div class="col-md-3">  
+                <div class="single-person">  
+                    <div class="person-image">  
+                        <img src="images/istockphoto-166146175-612x612.jpg" alt="">  
+                        <span class="icon">  
+                            <i class="fab fa-html5"></i>  
+                        </span>  
+                    </div>  
+                    <div class="person-info">  
+                        <h3 class="full-name">Mueed Hyder</h3>  
+                        <span class="speciality">BACK END</span>  
+                    </div>  
+                </div>  
+            </div>  
+            <!-- / End Single Person -->  
+            <!-- Start Single Person -->
+            <div class="col-md-3">  
+                <div class="single-person">  
+                    <div class="person-image">  
+                        <img src="images/WhatsApp Image 2025-01-15 at 00.37.31_260cdc8b.jpg" alt="">  
+                        <span class="icon">  
+                            <i class="fab fa-wordpress-simple"></i>  
+                        </span>  
+                    </div>  
+                    <div class="person-info">  
+                        <h3 class="full-name">AZAM TAMHEED</h3>  
+                        <span class="speciality">BACK END</span>  
+                    </div>  
+                </div>  
+            </div>  
+            <!-- / End Single Person -->  
+        </div>  
+    
+        <!-- Second Row -->
+        <div class="container second-row">
+            <!-- Start Single Person -->
+            <div class="col-md-3">  
+                <div class="single-person">  
+                    <div class="person-image">  
+                        <img src="images/mo.jpg" alt="">  
+                        <span class="icon">  
+                            <i class="fab fa-angular"></i>  
+                        </span>  
+                    </div>  
+                    <div class="person-info">  
+                        <h3 class="full-name">MOHSIN ALI</h3>  
+                        <span class="speciality">FRONT-END</span>  
+                    </div>  
+                </div>  
+            </div>  
+            <!-- / End Single Person -->  
+            <!-- Start Single Person -->
+            <div class="col-md-3">  
+                <div class="single-person">  
+                    <div class="person-image">  
+                        <img src="images/IMG-8091 (1).jpg" alt="">  
+                        <span class="icon">  
+                            <i class="fab fa-js"></i>  
+                        </span>  
+                    </div>  
+                    <div class="person-info">  
+                        <h3 class="full-name">FALLAH NAZIR</h3>  
+                        <span class="speciality">FRONT END</span>  
+                    </div>  
+                </div>  
+            </div>  
+            <!-- / End Single Person -->  
+        </div>  
+    </div>
+    
+      
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+      <div class="row">
+        <!-- CONTENT FOR THE MOBILE NUMBER  -->
+        <div class="col-md-4 col-lg-4 contact-box pt-1 d-md-block d-lg-flex d-flex">
+          <div class="contact-box__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-phone-call" viewBox="0 0 24 24" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+              <path d="M15 7a2 2 0 0 1 2 2" />
+              <path d="M15 3a6 6 0 0 1 6 6" />
+            </svg>
+          </div>
+          <div class="contact-box__info">
+            <a href="#" class="contact-box__info--title">+60-177797056</a>
+            <p class="contact-box__info--subtitle">  Mon-Fri 9am-6pm</p>
+          </div>
+        </div>  
+        <!-- CONTENT FOR EMAIL  -->
+        <div class="col-md-4 col-lg-4 contact-box pt-1 d-md-block d-lg-flex d-flex">
+          <div class="contact-box__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail-opened" viewBox="0 0 24 24" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <polyline points="3 9 12 15 21 9 12 3 3 9" />
+              <path d="M21 9v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" />
+              <line x1="3" y1="19" x2="9" y2="13" />
+              <line x1="15" y1="13" x2="21" y2="19" />
+            </svg>
+          </div>
+          <div class="contact-box__info">
+            <a href="#" class="contact-box__info--title">info@wandermalaysia.com</a>
+            <p class="contact-box__info--subtitle">Online support</p>
+          </div>
+        </div>
+        <!-- CONTENT FOR LOCATION  -->
+        <div class="col-md-4 col-lg-4 contact-box pt-1 d-md-block d-lg-flex d-flex">
+          <div class="contact-box__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-2" viewBox="0 0 24 24" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <line x1="18" y1="6" x2="18" y2="6.01" />
+              <path d="M18 13l-3.5 -5a4 4 0 1 1 7 0l-3.5 5" />
+              <polyline points="10.5 4.75 9 4 3 7 3 20 9 17 15 20 21 17 21 15" />
+              <line x1="9" y1="4" x2="9" y2="17" />
+              <line x1="15" y1="15" x2="15" y2="20" />
+            </svg>
+          </div>
+          <div class="contact-box__info">
+            <a href="#" class="contact-box__info--title">USM Malaysia</a>
+            <p class="contact-box__info--subtitle">11700, Penang</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  
+  
+  
+    <!-- START THE COPYRIGHT INFO  -->
+   
+  </footer>
+
+
+  
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.4.4/umd/popper.min.js" integrity="sha384-fegNtn6ur2s8eog+DmOxQDLcHJoj2KUvh2OGdf6dzOhL0ajXJ5jkJoXZaf8AjDye" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq5KBo5eFZx4z4zzDe2GzGtO5C4zUU7HgtOLOOmHf/zZBXdz4k" crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+
